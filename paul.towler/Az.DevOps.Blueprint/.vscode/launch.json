@@ -1,0 +1,61 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PowerShell Launch Current File",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "cwd": "${file}"
+        },
+        {
+            "name": "New-AzDevOpsBlueprintAssignment (Subscription)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "New-AzDevOpsBlueprintAssignment",
+            "args": [
+                "-Blueprint $BlueprintSubscription",
+                "-AssignmentName Example_Subscription",
+                "-InputPath $BlueprintsRoot\\Example",
+                "-Location $env:Location",
+                "-Version Subscription.TEST"               
+            ]
+        },
+        {
+            "name": "New-AzDevOpsBlueprintAssignment (Management Group)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "New-AzDevOpsBlueprintAssignment",
+            "args": [
+                "-Blueprint $BlueprintManagementGroup",
+                "-AssignmentName Example_ManagementGroup",
+                "-InputPath $BlueprintsRoot\\Example",
+                "-Location $env:Location",
+                "-Version ManagementGroup.TEST"               
+            ]
+        },
+        {
+            "name": "Remove-AzDevOpsBlueprintAssignment (Subscription)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Remove-AzDevOpsBlueprintAssignment",
+            "args": [
+                "-Blueprint $BlueprintSubscription",
+                "-AssignmentName Example_Subscription"                
+            ]
+        },
+        {
+            "name": "Remove-AzDevOpsBlueprintAssignment (Management Group)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "Remove-AzDevOpsBlueprintAssignment",
+            "args": [
+                "-Blueprint $BlueprintManagementGroup",
+                "-AssignmentName Example_ManagementGroup"                
+            ]
+        }
+    ]
+}

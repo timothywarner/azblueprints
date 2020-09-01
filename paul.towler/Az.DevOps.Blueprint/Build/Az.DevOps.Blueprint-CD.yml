@@ -1,0 +1,43 @@
+name: $(Build.DefinitionName)_$(Build.SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+resources:
+  pipelines:
+  - pipeline: build
+    source: Az.DevOps.Blueprint-CI
+    branch: master
+    trigger:
+      branches:
+      - master
+  repositories:
+  - repository: scripts
+    type: git
+    name: PowerShell-Scripts
+
+trigger: none
+
+variables:
+- group: COMMON
+- group: Az.DevOps.Blueprint_Parameters
+- name:  Version.Revision
+  value: $[counter(variables['Version.MajorMinor'], 0)]
+
+stages:
+- stage: Release
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+  - deployment: Release
+    displayName: 'Release to PowerShell Gallery'
+    pool: 'Default'
+    environment: Release
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: scripts
+          - task: PowerShell@2
+            inputs:
+              filePath: 'Publish-PowerShellGallery/Publish-PowerShellGallery.ps1'
+              arguments: '-ModulePath $(Pipeline.Workspace)/build/drop/Source/Az.DevOps.Blueprint -Modules @(@{Name = "Az"; Version = "4.1.0"; Type = "Minimum"}, @{Name = "Az.Blueprint"; Version = "0.2.13"; Type = "Minimum"})'
+              pwsh: true
+            env:
+              KEY: $(API_KEY)

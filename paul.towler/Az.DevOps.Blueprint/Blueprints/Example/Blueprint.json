@@ -1,0 +1,169 @@
+{
+    "properties": {
+        "displayName": "Example",
+        "targetScope": "subscription",
+        "parameters": {
+            "blueprint_default_string": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "Default String Parameter (Blueprint)",
+                    "description": "This is a String Parameter that is populated using a Default Value"
+                },
+                "defaultValue": "Example-Blueprint-1",
+                "allowedValues": [
+                    "Example-Blueprint-1",
+                    "Example-Blueprint-2",
+                    "Example-Blueprint-3"
+                ]
+            },
+            "blueprint_override_string": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "Override String Parameter (Blueprint)",
+                    "description": "This is a String Parameter that is populated using a Default Value, but will be overriden with another value"
+                },
+                "defaultValue": "Example-Blueprint-1",
+                "allowedValues": [
+                    "Example-Blueprint-1",
+                    "Example-Blueprint-2",
+                    "Example-Blueprint-3"
+                ]
+            },
+            "blueprint_string": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "String Parameter (Blueprint)",
+                    "description": "This is a String Parameter that will be populated when the Blueprint is Assigned"
+                }
+            },
+            "blueprint_default_object": {
+                "type": "object",
+                "metadata": {
+                    "displayName": "Default Object Parameter (Blueprint)",
+                    "description": "This is an Object Parameter that is populated using a Default Value"
+                },
+                "defaultValue": {"key1": "value1", "key2": "value2"}
+            },
+            "blueprint_override_object": {
+                "type": "object",
+                "metadata": {
+                    "displayName": "Override Object Parameter (Blueprint)",
+                    "description": "This is an Object Parameter that is populated using a Default Value, but will be overriden with another value"
+                },
+                "defaultValue": {"key1": "value1", "key2": "value2"}
+            },
+            "blueprint_object": {
+                "type": "object",
+                "metadata": {
+                    "displayName": "Object Parameter (Blueprint)",
+                    "description": "This is an Object Parameter that will be populated when the Blueprint is Assigned"
+                }
+            },
+            "blueprint_default_array": {
+                "type": "array",
+                "metadata": {
+                    "displayName": "Default Array Parameter (Blueprint)",
+                    "description": "This is an Array Parameter that is populated using a Default Value"
+                },
+                "defaultValue": ["Value1", "Value2"]
+            },
+            "blueprint_override_array": {
+                "type": "array",
+                "metadata": {
+                    "displayName": "Override Array Parameter (Blueprint)",
+                    "description": "This is an Array Parameter that is populated using a Default Value, but will be overriden with another value"
+                },
+                "defaultValue": ["Value1", "Value2"]
+            },
+            "blueprint_array": {
+                "type": "array",
+                "metadata": {
+                    "displayName": "Array Parameter (Blueprint)",
+                    "description": "This is an Array Parameter that will be populated when the Blueprint is Assigned"
+                }
+            },
+            "blueprint_default_integer": {
+                "type": "int",
+                "metadata": {
+                    "displayName": "Default Integer Parameter (Blueprint)",
+                    "description": "This is an Integer Parameter that is populated using a Default Value"
+                },
+                "defaultValue": 100
+            },
+            "blueprint_override_integer": {
+                "type": "int",
+                "metadata": {
+                    "displayName": "Override Integer Parameter (Blueprint)",
+                    "description": "This is an Integer Parameter that is populated using a Default Value, but will be overriden with another value"
+                },
+                "defaultValue": 100
+            },
+            "blueprint_integer": {
+                "type": "int",
+                "metadata": {
+                    "displayName": "Integer Parameter (Blueprint)",
+                    "description": "This is an Integer Parameter that will be populated when the Blueprint is Assigned"
+                }
+            },
+            "template1_default_string": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "Default String Parameter (Template 1)",
+                    "description": "Example Parameter for a template that will be populated using a Default Value"
+                },
+                "defaultValue": "Example-Blueprint-4",
+                "allowedValues": [
+                    "Example-Blueprint-4",
+                    "Example-Blueprint-5",
+                    "Example-Blueprint-6"
+                ]
+            },
+            "template1_override_string": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "Override String Parameter (Template 1)",
+                    "description": "Example Parameter for a template populated using a Default Value, but will be overriden with another value"
+                },
+                "defaultValue": "Example-Blueprint-4",
+                "allowedValues": [
+                    "Example-Blueprint-4",
+                    "Example-Blueprint-5",
+                    "Example-Blueprint-6"
+                ]
+            },
+            "template1_string": {
+                "type": "string",
+                "metadata": {
+                    "displayName": "String Parameter (Template 1)",
+                    "description": "Example Parameter that will be populated when the Blueprint is Assigned"
+                }
+            },
+            "template2_secure_string": {
+                "type": "securestring",
+                "metadata": {
+                    "displayName": "Secure String Parameter (Template 2)",
+                    "description": "This is a Secure String Parameter that will be populated when the Blueprint is Assigned"
+                },
+                "allowedValues": []
+            }
+        },
+        "resourceGroups": {
+            "resource_default_test": {
+                "name": "RG_Example-Blueprint-1",
+                "location": "australiasoutheast",
+                "metadata": {
+                    "displayName": "Default Test Resource Group",
+                    "description": "This is a Resource Group that already has value required to create a Resource Group"
+                },
+                "dependsOn": [],
+                "tags": {}
+            },
+            "resource_test": {
+                "metadata": {
+                    "displayName": "Test Resource Group",
+                    "description": "This is a Resource Group has no values required to create a Resource Group that will be populated when the Blueprint is Assigned"
+                }
+            }
+        }
+    }
+}

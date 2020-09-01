@@ -1,0 +1,43 @@
+pool: 'Hosted VS2017'
+
+variables:
+ - name: spnName
+   value: 'pipelines-runner'
+ - name: blueprintsPath
+   value: '.\samples\'
+ - name: blueprintName
+   value: '101-boilerplate'
+ - name: subscriptionId
+   value: 'e93d3ee6-fac1-412f-92d6-bfb379e81af2' # / Contoso IT - SH360 - Prod
+
+trigger:
+  branches:
+    include:
+    - master
+    - dev
+  paths:
+    exclude:
+    - README.md
+    - LICENSE
+    - .gitignore
+    - .github/*
+
+steps:
+
+- task: CreateBlueprint@1
+  inputs:
+    azureSubscription: $(spnName)
+    BlueprintName: $(blueprintName)
+    BlueprintPath: '$(blueprintsPath)$(blueprintName)' # would need to edit this to work with built-ins
+    AlternateLocation: false
+    PublishBlueprint: true
+
+- task: AssignBlueprint@1
+  inputs:
+    azureSubscription: $(spnName)
+    AssignmentName: 'pla-$(blueprintName)'
+    BlueprintName: $(blueprintName)
+    ParametersFile: '$(blueprintsPath)$(blueprintName)\assign.json'
+    SubscriptionID: $(subscriptionId)
+    Wait: true
+    Timeout: 500

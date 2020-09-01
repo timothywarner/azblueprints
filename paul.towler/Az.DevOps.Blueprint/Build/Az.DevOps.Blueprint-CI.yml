@@ -1,0 +1,66 @@
+name: $(Build.DefinitionName)_$(Build.SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+resources:
+  repositories:
+  - repository: scripts
+    type: git
+    name: PowerShell-Scripts
+
+trigger:
+  branches:
+    include:
+    - feature/*
+    - master
+  paths:
+    include:
+    - Source/*
+    exclude:
+    - Build/*
+    - Tests/*
+
+variables:
+- group: COMMON
+- group: Az.DevOps.Blueprint_Parameters
+- name:  Version.Revision
+  value: $[counter(variables['Version.MajorMinor'], 0)]
+
+stages:
+- stage: Build
+  jobs:
+  - job: 'Test'
+    pool: 'Default'
+
+    steps:
+    - checkout: self
+    - checkout: scripts
+
+    - task: AzurePowerShell@5
+      displayName: 'Test: Az.DevOps.Blueprint Module'
+      inputs:
+        azureSubscription: 'ICT-Development'
+        ScriptType: 'FilePath'
+        ScriptPath: 'PowerShell-Scripts/Invoke-Pester/Invoke-Pester.ps1'
+        ScriptArguments: '-Path ./Tests/Az.DevOps.Blueprint.Tests* -Parameters @{DevOpsPAT = "$(DevopsPAT)"} -OutputFile ./TEST-ModuleAzDevOpsBlueprint.xml -Modules @{ Name = "Pester"; Version = "4.10.1"; Type = "Required"}, @{ Name = "PSScriptAnalyzer"; Version = "1.18.2"; Type = "Minimum"}'
+        azurePowerShellVersion: 'LatestVersion'
+        pwsh: true
+        workingDirectory: '$(Build.SourcesDirectory)/Az.DevOps.Blueprint'
+
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: NUnit
+        failTaskOnFailedTests: true
+        testRunTitle: 'Tests - Az.DevOps.Blueprint Build'
+  
+  - job: 'Publish'
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    dependsOn:
+      - 'Test'
+    pool: 'Default'
+    
+    steps:
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifact'
+      inputs:
+        targetPath: '$(Build.SourcesDirectory)'
+        artifact: 'drop'

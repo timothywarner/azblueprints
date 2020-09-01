@@ -1,4 +1,4 @@
-##### Azure Blueprints Learning Resources #####
+## Azure Blueprints Learning Resources
 
 Azure Blueprints documentation
 https://docs.microsoft.com/en-us/azure/governance/blueprints/
@@ -6,14 +6,33 @@ https://docs.microsoft.com/en-us/azure/governance/blueprints/
 Understand the lifecycle of a blueprint - Azure Blueprints | Microsoft Docs
 https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/lifecycle
 
-An overview of Azure Blueprints | Azure Friday - YouTube
-https://www.youtube.com/watch?v=cQ9D-d6KkMY
-
-Azure Governance - #3 - Policy & Blueprints - YouTube
-https://www.youtube.com/watch?v=EwO25vecGUo
-
 Sample Blueprint Definitions
 https://github.com/azure/azure-blueprints
+
+Az.Blueprints
+
+Az.DevOps.Blueprints
+
+Az Pipeline Task
+
+Public AzDo repo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Azure Blueprint Tutorial
 https://agazoth.github.io/blogpost/2018/11/11/Azure-Blueprint.html

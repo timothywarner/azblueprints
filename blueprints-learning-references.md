@@ -3,54 +3,24 @@
 Azure Blueprints documentation
 https://docs.microsoft.com/en-us/azure/governance/blueprints/
 
-Understand the lifecycle of a blueprint - Azure Blueprints | Microsoft Docs
+Understand the lifecycle of a blueprint - Microsoft Docs
 https://docs.microsoft.com/en-us/azure/governance/blueprints/concepts/lifecycle
 
-Sample Blueprint Definitions
+Sample Blueprint Definitions - Microsoft
 https://github.com/azure/azure-blueprints
 
-Az.Blueprints
+Az.Blueprint PowerShell module
+https://docs.microsoft.com/en-us/powershell/module/az.blueprint/
 
-Az.DevOps.Blueprints
+Az.DevOps.Blueprint PowerShell module
+https://www.powershellgallery.com/packages/Az.DevOps.Blueprint/1.0.3
 
-Az Pipeline Task
-
-Public AzDo repo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Azure Blueprint Tutorial
-https://agazoth.github.io/blogpost/2018/11/11/Azure-Blueprint.html
-
-Import/Export Azure Blueprints using Manage-AzureRMBlueprint PowerShell Script
-https://www.youtube.com/watch?v=SMORUIPhKd8&feature=youtu.be
-
-Azure Blueprints PowerShell
-https://github.com/JimGBritt/AzureBlueprint/
-
-Azure Blueprint PowerShell, Part 2
-https://github.com/Agazoth/AzureBlueprint
-
-Azure Blueprints via Azure DevOps Pipeline​
-https://www.linkedin.com/pulse/azure-blueprints-via-devops-pipeline-paul-towler/
-
-Azure Blueprints pipeline scripts
-https://github.com/Azure/azure-blueprints/tree/master/pipelines-scripts
-
-Azure Blueprints - Visual Studio Extension
+Azure Blueprints Pipeline Tasks
 https://marketplace.visualstudio.com/items?itemName=nepeters.azure-blueprints
+
+Paul Towler Resources
+https://www.linkedin.com/pulse/azure-blueprints-via-devops-pipeline-paul-towler/
+https://dev.azure.com/mrptsai/Blueprints
+
+Jim Britt's Azure Blueprint PowerShell script module
+https://github.com/JimGBritt/AzureBlueprint/

@@ -15,7 +15,6 @@ $bp = Get-AzBlueprint -Name 'basic-networking-blueprint'
 
 Export-AzBlueprintWithArtifact -Blueprint $bp -OutputPath '.' -Version '1.0'
 
-
 # Push sample blueprint to Azure as a draft
 Import-AzBlueprintWithArtifact -Name Boilerplate -ManagementGroupId "DevMG" -InputPath  ".\samples\101-boilerplate"
 
